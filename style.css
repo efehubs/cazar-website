@@ -1,0 +1,372 @@
+/* --- CSS Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+/* 1. DEFAULT (LIGHT) VARIABLES */
+:root {
+    --primary-color: #ff8c00; 
+    --dark-blue: #182848;
+    --light-blue: #4b6cb7;
+    --dark-gray: #777;
+    
+    /* Default to Light Mode */
+    --mode-bg: #f4f4f9; 
+    --mode-text: #333; 
+    --card-bg: white;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* 2. AUTOMATIC DARK MODE SUPPORT */
+/* This activates if the user's OS or Browser is set to Dark */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --mode-bg: #1e1e1e; 
+        --mode-text: #f0f0f0; 
+        --card-bg: #2d2d2d; 
+        --shadow-color: rgba(255, 255, 255, 0.05);
+        --dark-gray: #aaa;
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: var(--mode-bg);
+    color: var(--mode-text);
+    line-height: 1.6;
+}
+
+/* ... Keep the rest of your CSS (Layout, Hero, Cards, etc.) the same ... */
+
+/* Update this existing class */
+.top-controls {
+    display: flex;
+    justify-content: space-between; /* This pushes Logo left and Button right */
+    align-items: center; /* Aligns them vertically in the middle */
+    padding: 20px;
+    max-width: 1100px; /* Aligns header width with the main content */
+    margin: 0 auto;    /* Centers the header bar itself */
+}
+
+/* 1. The Logo Styling */
+.top-logo {
+    font-size: 2.8em;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 2px;
+    
+    /* THE BRIGHT METALLIC GRADIENT */
+    /* Silver -> White Shine -> Silver */
+    background: linear-gradient(
+        to right,
+        #707070 0%,      
+        #757575 40%,     
+        #dfdfdf 50%,     
+        #757575 60%,     
+        #707070 100%     
+    );
+    
+    /* Double width background for smooth movement */
+    background-size: 200% auto;
+    
+    /* Clip background to text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Transparent text so background shows */
+    color: transparent;
+    
+
+    /* ANIMATION: 6s duration, Linear (constant speed), Infinite loop */
+    animation: shine-move 6s linear infinite;
+}
+
+/* 2. The Continuous Animation Logic */
+@keyframes shine-move {
+    0% {
+        background-position: 200% center;
+    }
+    100% {
+        background-position: -200% center;
+    }
+}
+
+/* Optional: Make it shine brighter when you hover over it */
+.top-logo:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    opacity: 1;
+}
+
+
+#mode-toggle {
+    background: none;
+    border: 1px solid var(--dark-gray);
+    color: var(--dark-gray);
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+#mode-toggle:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.container { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(135deg, var(--light-blue), var(--dark-blue)); 
+    color: white;
+    padding: 100px 40px; 
+    text-align: center;
+    border-radius: 12px; 
+    margin-bottom: 50px;
+    position: relative; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    z-index: 1;
+}
+
+.hero::before {
+    content: "cʌzʌʀ";
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20vw; 
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.07); 
+    pointer-events: none; 
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 1.25em;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Navigation Grid --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Styles for the boxes */
+.nav-box {
+    text-decoration: none; /* Removes underline from links */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 180px; /* Fixed height for uniform boxes */
+}
+
+.card {
+    background-color: var(--card-bg); 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); 
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color); /* Highlight border on hover */
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+.card p {
+    color: var(--dark-gray);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
+    color: var(--dark-gray);
+    margin-top: 20px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .card-grid {
+        /* On small screens (tablets/phones), switch to 1 column */
+        grid-template-columns: 1fr; 
+    }
+    .hero h1 {
+        font-size: 2.5em;
+    }
+}
+
+
+
+
+
+/*----------------------------------------------------------*/
+/*---------------------- Members Page ----------------------*/
+/*----------------------------------------------------------*/
+
+/* --- Navigation Grid --- */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Styles for the boxes */
+.mem-box {
+    text-decoration: none; /* Removes underline from links */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    height: 120px; /* Fixed height for uniform boxes */
+}
+
+.Memcard {
+    background-color: var(--card-bg); 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); 
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.Memcard:hover {
+    transform: translateY(-5px);
+}
+
+.Memcard h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+.Memcard p {
+    color: var(--dark-gray);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+
+
+
+
+/*----------------------------------------------------------*/
+/*---------------------- Servers Page ----------------------*/
+/*----------------------------------------------------------*/
+
+
+.server-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+
+.sv-box {
+    text-decoration: none; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    height: 100px; 
+    cursor: pointer;
+    position: relative; 
+}
+
+.svcard {
+    background-color: var(--card-bg); 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color); 
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.svcard:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color); 
+}
+
+.svcard h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+.svcard p {
+    color: var(--dark-gray);
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: right;
+}
+
+
+/* The style for the 'Copied!' popup */
+.copy-msg {
+    position: absolute;
+    bottom: 20px;       /* Distance from bottom of card */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the text */
+    
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    z-index: 10;
+    
+    /* Animation settings */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* This class is added by JS to make the message appear */
+.sv-box.show-copied .copy-msg {
+    opacity: 1;
+    visibility: visible;
+    bottom: 40px; /* Moves up slightly when active */
+}

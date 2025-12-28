@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cazar Academy</title>
+    <link rel="stylesheet" href="../style.css">
+    </head>
+<body>
+
+   <header>
+    <div class="top-controls">
+        <a href="../index.html" class="top-logo">cʌzʌʀ</a>
+
+    </div>
+</header>
+    <div class="container"> 
+        <main>
+            <section class="hero">
+                <h1>Play in cʌzʌʀ servers</h1>
+                <p>Compete in our ddos protected instagib servers</p>
+            </section>
+
+            <div class="server-grid">
+
+
+                <div class="svcard sv-box" data-ip="66.118.245.77:8300" onclick="copyServerIp(this)">
+                    <h3>cʌzʌʀ fng</h3>
+                    <p>Click to copy ip : 66.118.245.77:8300</p>
+    
+                    <span class="copy-msg">IP Copied!</span>
+                </div>
+
+                
+                <div class="svcard sv-box" data-ip="66.118.245.77:8301" onclick="copyServerIp(this)">
+                    <h3>cʌzʌʀ fng small</h3>
+                    <p>Click to copy ip : 66.118.245.77:8301</p>
+    
+                    <span class="copy-msg">IP Copied!</span>
+                </div>
+
+
+                <div class="svcard sv-box" data-ip="66.118.245.77:8302" onclick="copyServerIp(this)">
+                    <h3>cʌzʌʀ fng small</h3>
+                    <p>Click to copy ip : 66.118.245.77:8302</p>
+    
+                    <span class="copy-msg">IP Copied!</span>
+                </div>
+
+
+                <div class="svcard sv-box" data-ip="66.118.245.77:8303" onclick="copyServerIp(this)">
+                    <h3>cʌzʌʀ fng small</h3>
+                    <p>Click to copy ip : 66.118.245.77:8303</p>
+    
+                    <span class="copy-msg">IP Copied!</span>
+                </div>
+
+
+                <div class="svcard sv-box" data-ip="66.118.245.77:8304" onclick="copyServerIp(this)">
+                    <h3>cʌzʌʀ fng small</h3>
+                    <p>Click to copy ip : 66.118.245.77:8304</p>
+    
+                    <span class="copy-msg">IP Copied!</span>
+                </div>
+
+          
+
+
+                
+
+            </div>
+        </main>
+        
+        <footer>
+            <p>Clan cʌzʌʀ , Founded In 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyServerIp(element) {
+        // 1. Get IP from the data-ip attribute
+        const ip = element.getAttribute('data-ip');
+        
+        // 2. Copy to clipboard
+        navigator.clipboard.writeText(ip).then(() => {
+            
+            // 3. Show "Copied!" message
+            element.classList.add('show-copied');
+
+            // 4. Hide it after 2 seconds
+            setTimeout(() => {
+                element.classList.remove('show-copied');
+            }, 2000);
+            
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+    </script>
+</body>
+</html>
