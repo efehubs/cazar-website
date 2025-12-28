@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cʌzʌʀ homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-controls">
+            <button id="mode-toggle">Dark Mode</button>
+        </div>
+    </header>
+
+    <div class="container"> 
+        <main>
+            <section class="hero">
+                <h1>Welcome to cʌzʌʀ</h1>
+                <p>who we are </p>
+            </section>
+
+            <div class="card-grid">
+                
+                <a href="#" class="card nav-box">
+                    <h3>Members</h3>
+                    <p>View Clan Members</p>
+                </a>
+
+                <a href="#" class="card nav-box">
+                    <h3>Maps</h3>
+                    <p>Search Maps</p>
+                </a>
+
+                <a href="#" class="card nav-box">
+                    <h3>Servers</h3>
+                    <p>Play On cʌzʌʀ Servers</p>
+                </a>
+
+                <a href="#" class="card nav-box">
+                    <h3>Academy</h3>
+                    <p>Learn With cʌzʌʀ Academy</p>
+                </a>
+
+                <a href="#" class="card nav-box">
+                    <h3>Submit Map</h3>
+                    <p>Upload Your Map</p>
+                </a>
+
+                <a href="#" class="card nav-box">
+                    <h3>Cazar Wiki</h3>
+                    <p>Documentation & Lore</p>
+                </a>
+
+            </div>
+        </main>
+        
+        <footer>
+            <p>Clan cʌzʌʀ , Founded In 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('mode-toggle');
+            const body = document.body;
+            
+            // Check for saved preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                toggleButton.textContent = 'Light Mode';
+            }
+
+            toggleButton.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDarkMode = body.classList.contains('dark-mode');
+                
+                toggleButton.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            });
+        });
+    </script>
+</body>
+</html>
